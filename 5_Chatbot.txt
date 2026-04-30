@@ -1,0 +1,29 @@
+def chatbot():
+    print("Welcome to Customer Support Chatbot")
+    
+    while True:
+        user = input("You: ").lower()
+
+        if "hello" in user or "hi" in user:
+            print("Bot: Hello! How can I help you?")
+        
+        elif "product" in user:
+            print("Bot: We offer laptops, mobiles, and accessories.")
+        
+        elif "price" in user:
+            print("Bot: Prices vary depending on the product.")
+        
+        elif "order" in user:
+            print("Bot: You can place an order on our website.")
+        
+        elif "help" in user:
+            print("Bot: I can help with products, prices, and orders.")
+        
+        elif "bye" in user:
+            print("Bot: Thank you! Have a nice day.")
+            break
+        
+        else:
+            print("Bot: Sorry, I didn't understand.")
+
+chatbot()
