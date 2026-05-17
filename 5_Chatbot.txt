@@ -1,0 +1,52 @@
+# Import required modules
+from datetime import datetime
+import random
+
+# Starting message of chatbot
+print("ChatBot: Hello! Type 'bye' to exit.")
+
+# Infinite loop for continuous conversation
+while True:
+
+    # Take user input and convert to lowercase
+    user = input("You: ").lower()
+
+    # Greeting response
+    if "hi" in user or "hello" in user:
+        print(random.choice(["Hi!", "Hello!", "Hey!"]))
+
+    # Small talk response
+    elif "how are you" in user:
+        print("I'm fine!")
+
+    # Bot identity
+    elif "name" in user:
+        print("I am Python ChatBot")
+
+    # Show current time
+    elif "time" in user:
+        print("Time:", datetime.now().strftime("%H:%M:%S"))
+
+    # Show current date
+    elif "date" in user:
+        print("Date:", datetime.now().strftime("%d-%m-%Y"))
+
+    # Simple calculator feature
+    elif any(op in user for op in "+-*/"):
+        try:
+            print("Answer:", eval(user))
+        except:
+            print("Invalid math expression")
+
+    # Thank you response
+    elif "thank" in user:
+        print("Welcome!")
+
+    # Exit condition
+    elif "bye" in user:
+        print("Goodbye!")
+        break
+
+    # Default response
+    else:
+        print("I am still learning...")

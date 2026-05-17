@@ -1,0 +1,88 @@
+import heapq
+
+# Input vertices
+v = input("Enter vertices: ").split()
+
+# Graph creation
+g = {i: [] for i in v}
+
+# Input edges
+e = int(input("Enter number of edges: "))
+
+print("Enter edges (u v cost):")
+
+for i in range(e):
+
+    u, x, w = input().split()
+
+    g[u].append((x, int(w)))
+    g[x].append((u, int(w)))
+
+# Input heuristic values
+h = {}
+
+print("Enter heuristic values:")
+
+for i in v:
+    h[i] = int(input(f"h({i}): "))
+
+# Input start and goal
+s = input("Enter start vertex: ")
+goal = input("Enter goal vertex: ")
+
+# Priority queue
+pq = [(h[s], 0, s, [s])]
+
+vis = set()
+
+# A* Algorithm
+while pq:
+
+    f, cost, node, path = heapq.heappop(pq)
+
+    if node == goal:
+
+        print("Shortest Path:", path)
+        print("Total Cost:", cost)
+
+        break
+
+    if node not in vis:
+
+        vis.add(node)
+
+        for n, w in g[node]:
+
+            if n not in vis:
+
+                heapq.heappush(
+                    pq,
+                    (cost + w + h[n],
+                     cost + w,
+                     n,
+                     path + [n])
+                )
+
+
+#Enter vertices: A B C D E F
+
+Enter number of edges: 6
+
+Enter edges (u v cost):
+A B 1
+A C 3
+B D 3
+B E 1
+C F 5
+D E 2
+
+Enter heuristic values:
+h(A): 6
+h(B): 4
+h(C): 4
+h(D): 0
+h(E): 0
+h(F): 0
+
+Enter start vertex: A
+Enter goal vertex: E

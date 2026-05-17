@@ -1,0 +1,69 @@
+from collections import deque
+
+# Graph input
+graph = {}
+
+n = int(input("Enter number of vertices: "))
+
+for i in range(n):
+    v = input("Enter vertex: ")
+    graph[v] = input("Enter neighbors: ").split()
+
+# DFS
+visited = set()
+
+def dfs(node):
+    if node not in visited:
+        print(node, end=" ")
+        visited.add(node)
+
+        for neighbor in graph[node]:
+            dfs(neighbor)
+
+# BFS
+def bfs(start):
+
+    q = deque([start])
+    visited_bfs = set([start])
+
+    while q:
+
+        node = q.popleft()
+        print(node, end=" ")
+
+        for neighbor in graph[node]:
+
+            if neighbor not in visited_bfs:
+                visited_bfs.add(neighbor)
+                q.append(neighbor)
+
+start = input("Enter starting vertex: ")
+
+print("DFS Traversal:")
+dfs(start)
+
+print("\nBFS Traversal:")
+bfs(start)
+
+
+#Enter number of vertices: 6
+
+Enter vertex: A
+Enter neighbors: B C
+
+Enter vertex: B
+Enter neighbors: A D E
+
+Enter vertex: C
+Enter neighbors: A F
+
+Enter vertex: D
+Enter neighbors: B
+
+Enter vertex: E
+Enter neighbors: B
+
+Enter vertex: F
+Enter neighbors: C
+
+Enter starting vertex: A

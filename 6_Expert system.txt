@@ -1,0 +1,34 @@
+# Function for diagnosis
+def diagnose(symptoms):
+
+    # Rule for Flu
+    if "fever" in symptoms and "cough" in symptoms:
+        return "You may have Flu"
+
+    # Rule for Dengue
+    elif "fever" in symptoms and "rash" in symptoms:
+        return "You may have Dengue"
+
+    # Rule for Migraine
+    elif "headache" in symptoms and "nausea" in symptoms:
+        return "You may have Migraine"
+
+    # Rule for Heart Issue
+    elif "chest pain" in symptoms:
+        return "Possible Heart Issue - Consult doctor immediately"
+
+    # Default condition
+    else:
+        return "Condition unclear, please consult a doctor"
+
+# Input symptoms from user
+user_input = input("Enter symptoms separated by comma: ").lower()
+
+# Convert input into list
+symptoms = [s.strip() for s in user_input.split(",")]
+
+# Get diagnosis result
+result = diagnose(symptoms)
+
+# Print result
+print("Diagnosis:", result)
